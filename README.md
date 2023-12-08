@@ -1,5 +1,5 @@
 # ProjetoUninoveSegundoSemestre2023# Projeto de Empreendedorismo e Desenvolvimento de Software - Smarket
-### Leia a [documentação]()
+### Leia a [documentação](https://drive.google.com/drive/folders/1xEu7VBYz7Zxhemi7QqPzVz2R5FO0MGhK)
 
 ## Descrição do Projeto
 
@@ -7,10 +7,10 @@ Este é o repositório do projeto de Empreendedorismo no Mercado de Softwares, d
 O objetivo deste projeto não é apenas criar um software, mas também enfatiza a criação de uma documentação completa e detalhada. O projeto de software em si é relativamente simples e não é o principal ponto cobrado pelos mestres que ministram a disciplina, mas a documentação do mesmo desempenha um papel crucial neste contexto e é devidamente cobrada.
 
 ## Link do site
-
+https://gunovaes.github.io/ProjetoUninoveSegundoSemestre2023/
 
 ## Link da Documentação:
-
+https://drive.google.com/drive/folders/1xEu7VBYz7Zxhemi7QqPzVz2R5FO0MGhK
 
 ## Contribuições
 
