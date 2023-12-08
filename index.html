@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="ptbr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-fPM8ZzFcz9D+Akupq3i5onG8yec5Bp0M0SSio01RCDrdi1zZQDLXQTvP3Jyy5B" crossorigin="anonymous">
+    <script src="jsmarket.js"></script>
+    <script src="https://kit.fontawesome.com/4e9fbd848b.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link rel="shortcut icon" href="imagens/fav_logo.png" type="image/x-icon">
+
+    
+
+    <title>Smarket.co</title>
+</head>
+<body style="background-color: #f1f1f1;">
+  <nav class="navbar bg-body-tertiary fixed-top" style="z-index: 999;">
+    <div class="container-fluid col-11 m-auto">
+      
+      <a><img src="imagens/BLACK LOGO SMKT.png" alt="Logo" width="65" height="45" class="d-inline-block align-text-top"></a>
+    
+      <style>
+       
+        nav a:hover {
+          font-size: 1.1em; 
+          transition: font-size 0.5s ease-in-out;
+          cursor: pointer;
+          
+        }
+        
+        
+      </style>
+      <a class="navbar-brand" href="#"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Smarket</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="pagamento.html"><i class="fas fa-shopping-cart"></i> Meu Carrinho</a>
+
+            </li>
+            <hr>
+
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Meu perfil
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#entre">Entre</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                  
+                  <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#cadastro">Cadastre-se</a></li>
+                  
+                </li>
+                
+              </ul>
+            </li>
+          </ul>
+          <form class="d-flex mt-3" role="search" id="formBusca">
+            <input class="form-control me-2" type="search" placeholder="Procurar produto" aria-label="Search " id="inputBusca" name="busca">
+            <button class="btn btn-outline-dark" type="submit">Buscar</button>
+            <div id="resultadosBusca"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+    
+    
+  
+  </nav>
+  <style>
+    /* Define a altura do carrossel */
+    #carouselExampleInterval {
+        height: 80vh; 
+    }
+
+    
+    #carouselExampleInterval .carousel-item img {
+        width: 100vw;
+        margin-top: 2.5rem;
+        object-fit: cover;
+        height: 60vh;
+    }
+</style>
+<div class="modal fade" id="cadastro" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastro</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form class="row g-3 needs-validation" novalidate>
+          <div class="col-md-4">
+            <label for="validationCustom01" class="form-label">Primeiro Nome</label>
+            <input type="text" class="form-control" id="validationCustom01" value="Smar" requigray>
+            <div class="valid-feedback">
+              Parece bom!
+            </div>
+          </div>
+          <div class="col-md-4">
+            <label for="validationCustom02" class="form-label">Sobrenome</label>
+            <input type="text" class="form-control" id="validationCustom02" value="Ket" required>
+            <div class="valid-feedback">
+              Parece bom!
+            </div>
+          </div>
+          
+          <div class="col-md-4">
+            <label for="validationCustomUsername" class="form-label">Nome de usuário</label>
+            <div class="input-group has-validation">
+              <span class="input-group-text" id="inputGroupPrepend">@</span>
+              <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+              <div class="invalid-feedback">
+                Por favor, selecione um nome de usuário válido.
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label for="validationCustom03" class="form-label">Cidade</label>
+            <input type="text" class="form-control" id="validationCustom03" required>
+            <div class="invalid-feedback">
+              Por favor, selecione uma cidade.
+            </div>
+          </div>
+          <div class="col-md-5">
+            <label for="validationCustom04" class="form-label">Estado</label>
+            <select class="form-select" id="validationCustom04" required>
+              <option selected disabled value="">Selecione...</option>
+              <option>...</option>
+            </select>
+            <div class="invalid-feedback">
+              Por favor, Selecione um estado válido.
+            </div>
+          </div>
+          
+          <div class="col-12">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+              <label class="form-check-label" for="invalidCheck">
+                Li e concordo com os Termos de Serviço
+              </label>
+              <div class="invalid-feedback">
+                Você deve concordar antes de se cadastrar.
+              </div>
+            </div>
+          </div>
+          
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cadastrar</button>
+        
+        
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="entre" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Faça seu Login</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Nome de Usuário</label>
+            <input type="text" class="form-control" id="text" aria-describedby="emailHelp">
+            
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Senha</label>
+            <input type="password" class="form-control" id="exampleInputPassword1">
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Manter-me conectado</label>
+          </div>
+          <button type="submit" class="btn btn-outline-dark" id="entraruser" name="entraruser" onclick="user()">Entrar</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        
+        
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="carouselExampleInterval" class="carousel slide h-130" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active" data-bs-interval="2200">
+      <img src="imagens/piracanjuba.png" alt="...">
+    </div>
+    <div class="carousel-item" data-bs-interval="2200">
+      <img src="imagens/carrossel2.webp" class="d-block w-100 img-fluid" alt="...">
+    </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+    <div class="container">
+      
+      <div class="row">
+        <div class="col-md-2 mt-8 mb-2 shadow-lg p-3 mb-3 bg-body-tertiary rounded rounded-end-circle">
+          
+          
+          <a><h2 class="fw-light">Ofertas</h2></a>
+        </div>
+      
+      </div>
+    <hr>
+    </div>
+    <div class="row row-cols-1 row-cols-md-4 g-4 col-10 m-auto mx-auto shadow p-2 mb-5 mt-5 bg-body-tertiary rounded">
+      <div class="col">
+        <div class="card col-11 mb-4" style="border: 3px solid black;">
+          <img src="imagens/Sabao-em-po-Vamix-1Kg.png" class="card-img-top mx-auto my-4" alt="sabao" style="width: 41%; height: auto; ">
+          <div class="card-body">
+            <h5 class="card-title ">Sabão Vamix em pó</h5>
+            <h6>1Kg</h6>
+            <h6><s>R$ 10,50</s></h6>
+            <p class="card-text">R$ 8,80</p>
+            <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              
+              Adicionar ao Carrinho
+              
+            </button> 
+            <span class="badge text-bg-success">16% off</span>
+            
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card col-11 mb-4" style="border: 3px solid black;">
+          <img src="imagens/leite_pira.png" class="card-img-top mx-auto my-4" alt="batata" style="width: 40%; height: auto; ">
+          <div class="card-body">
+            <h5 class="card-title ">Leite Piracanjuba Integral</h5>
+            <h6>1L</h6>
+            <h6><s>R$ 5,20</s></h6>
+            <p class="card-text">R$ 4,25 </p>
+            <button type="button" class="btn btn-outline-success " data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Adicionar ao Carrinho
+            
+              
+          </button>
+          <span class="badge text-bg-success">20% off</span>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        
+        <div class="card col-11 mb-4" style="border: 3px solid black;">
+          
+          <img src="imagens/cheetos.png" class="card-img-top mx-auto my-4" alt="batata" style="width: 41%; height: auto; " >
+          <div class="card-body">
+            <h5 class="card-title ">Salgadinho Cheetos Requeijão</h5>
+            <h6>140g</h6>
+            <h6><s>R$ 11,90</s></h6>
+            <p class="card-text">R$ 9,05</p>
+            <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Adicionar ao Carrinho
+              
+            </button>
+            <span class="badge text-bg-success">24% off</span>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card col-11 mb-4" style="border: 3px solid black;">
+          <img src="imagens/nuggets.png" class="card-img-top mx-auto my-4" alt="batata" style="width: 41%; height: auto; ">
+          <div class="card-body">
+            <h5 class="card-title ">Nuggets Sadia Tradicional</h5>
+            <h6>700g</h6>
+            <h6><s>R$ 21,99</s></h6>
+            <p class="card-text">R$ 17,59</p>
+            <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Adicionar ao Carrinho
+              
+            </button>
+            <span class="badge text-bg-success">20% off</span>
+          </div>
+        </div>
+      </div>
+
+      <button type="button" class="btn btn-outline-success rounded-start-pill" data-bs-target="#vermaisofertas" data-bs-toggle="modal"
+          style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem; margin-left: auto;">
+    Ver mais ofertas
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Produto adicionado!</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          O produto selecionado foi adiconado ao carinho!
+        </div>
+        
+        <div class="modal-footer ">
+          
+        <button type="button" class="btn btn-outline-dark " data-bs-dismiss="modal">Confirmar</button>
+        </div>
+      </div>
+    </div>
+
+    </div>
+    
+    
+    
+    
+  </div>
+
+
+
+        <div class="container">
+        
+        
+          <div class="row">
+            <div class="col-md-2 mt-8 mb-2 shadow-lg p-3 mb-3 bg-body-tertiary rounded rounded-end-circle">
+              
+              
+              <a><h2 class="fw-light">Bebidas</h2></a>
+            </div>
+          
+          </div>
+          <hr>
+        </div>
+      <div class="row row-cols-1 row-cols-md-4 g-4 col-10 m-auto mx-auto shadow p-2 mb-5 mt-5 bg-body-tertiary rounded">
+          <div class="col">
+            <div class="card col-11 mb-4" style="border: 3px solid black;">
+              <img src="imagens/cocacola.png" class="card-img-top mx-auto my-4" alt="..." style="width: 50%; height: auto; ">
+              <div class="card-body">
+                <h5 class="card-title ">Coca-Cola</h5>
+                <h6>290 ML</h6>
+                <p class="card-text">R$ 5,90</p>
+                <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Adicionar ao Carrinho
+                  
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card col-11 mb-4" style="border: 3px solid black;">
+              <img src="imagens/redbull.png" class="card-img-top mx-auto my-4" alt="..." style="width: 50%; height: auto; ">
+              <div class="card-body">
+                <h5 class="card-title ">Red Bull</h5>
+                <h6>250 ML</h6>
+                <p class="card-text">R$ 9,90</p>
+                <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Adicionar ao Carrinho
+                  
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card col-11 mb-4" style="border: 3px solid black;">
+              <img src="imagens/guarana.png" class="card-img-top mx-auto my-4" alt="..." style="width: 50%; height: auto; ">
+              <div class="card-body">
+                <h5 class="card-title ">Guaraná Antartica</h5>
+                <h6>250 ML</h6>
+                <p class="card-text">R$ 3,69</p>
+                <button type="button" class="btn btn-outline-dark" data-bs-toggle= "modal" data-bs-target="#exampleModal">
+                Adicionar ao Carrinho
+                  
+                </button>
+                
+              </div>
+            </div>
+            
+          </div>
+          <div class="col">
+            <div class="card col-11 mb-4" style="border: 3px solid black;">
+              <img src="imagens/suco.png" class="card-img-top mx-auto my-4" alt="SUCO MAGUARY LARANJA-LATA" style="width: 50%; height: auto; " >
+              <div class="card-body">
+                <h5 class="card-title ">Suco Maguary</h5>
+                <h6>250 ML</h6>
+                <p class="card-text">R$ 3,49</p>
+                <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Adicionar ao Carrinho
+                  
+                </button>
+              </div>
+            </div>
+          </div>
+          
+          <button type="button" class="btn btn-outline-dark rounded-start-pill"  data-bs-target="#vermaisbebidas" data-bs-toggle="modal"
+              style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem; margin-left: auto;">
+        Ver mais bebidas
+        </button>
+      
+      </div>
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Produto adicionado!</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              O produto selecionado foi adiconado ao carinho!
+            </div>
+            
+            <div class="modal-footer ">
+              
+            <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Confirmar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="vermaisbebidas" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Busque um produto</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form onsubmit="search(); return false;" class="d-flex mt-3" role="search" id="formBusca">
+                <input class="form-control me-2" type="search" placeholder="Procurar produto" aria-label="Search " id="inputBusca" name="busca">
+                <button class="btn btn-outline-" type="submit">Buscar</button>
+                <div id="resultadosBusca"></div>
+              </form>
+            </div>
+            
+            <div class="modal-footer ">
+            <button type="button" class="btn btn-outline-dark " data-bs-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">Adicionar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="vermaisfrutas" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Busque um produto</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form onsubmit="search(); return false;" class="d-flex mt-3" role="search" id="formBusca">
+                <input class="form-control me-2" type="search" placeholder="Procurar produto" aria-label="Search " id="inputBusca" name="busca">
+                <button class="btn btn-outline-dark" type="submit">Buscar</button>
+                <div id="resultadosBusca"></div>
+              </form>
+            </div>
+            
+            <div class="modal-footer ">
+            <button type="button" class="btn btn-outline-dark " data-bs-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">Adicionar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="vermaisofertas" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Por hoje é só :(</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+             Por enquanto apenas esses produtos estão em oferta.
+            </div>
+            
+            
+            <div class="modal-footer ">
+              
+              <button type="button" class="btn btn-outline-dark " data-bs-dismiss="modal">Confirmar</button>
+             
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <div class="container">
+      
+      <div class="row">
+        <div class="col-md-2 mt-8 mb-2 shadow-lg p-3 mb-3 bg-body-tertiary rounded rounded-end-circle">
+          
+          
+          <a><h2 class="fw-light">Frutas</h2></a>
+        </div>
+      
+      </div>
+      <hr>
+    </div>
+    <div class="row row-cols-1 row-cols-md-4 g-4 col-10 m-auto mx-auto shadow p-2 mb-5 mt-5 bg-body-tertiary rounded">
+        <div class="col">
+          <div class="card col-11 mb-4" style="border: 3px solid black;">
+            <img src="imagens/limao.png" class="card-img-top mx-auto my-4" alt="limão" style="width: 50%; height: auto; ">
+            <div class="card-body">
+
+              <h5 class="card-title ">Limão</h5>
+              <h6>Taiti</h6>
+              <p class="card-text">R$ 4,90/kg</p>
+              <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              Adicionar ao Carrinho
+                
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card col-11 mb-4" style="border: 3px solid black;">
+            <img src="imagens/banana.png" class="card-img-top mx-auto my-4" alt="banana" style="width: 50%; height: auto; ">
+            <div class="card-body">
+              <h5 class="card-title ">Banana</h5>
+              <h6>Nanica</h6> 
+              <p class="card-text">R$ 5,59/kg</p>
+              <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              Adicionar ao Carrinho
+                
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card col-11 mb-4" style="border: 3px solid black;">
+            <img src="imagens/abacaxi.png" class="card-img-top mx-auto my-4" alt="abacaxi" style="width: 50%; height: auto; ">
+            <div class="card-body">
+              <h5 class="card-title ">Abacaxi Pérola</h5>
+              <h6>1 un.</h6> 
+              <p class="card-text">R$ 9,49</p>
+              <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              Adicionar ao Carrinho
+                
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card col-11 mb-4" style="border: 3px solid black;">
+            <img src="imagens/morango.png" class="card-img-top mx-auto my-4" alt="..." style="width: 50%; height: auto; ">
+            <div class="card-body">
+              <h5 class="card-title ">Bandeja Morango</h5>
+              <h6>Apx. 360g</h6> 
+
+              <p class="card-text">R$ 11,90</p>
+              <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              Adicionar ao Carrinho
+                
+              </button>
+            </div>
+          </div>
+          
+        </div>
+        <button type="button" class="btn btn-outline-dark rounded-start-pill" data-bs-target="#vermaisfrutas" data-bs-toggle="modal"
+          style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem; margin-left: auto;">
+          Ver mais frutas
+        </button>   
+
+
+      
+
+
+    </div>
+  <hr>
+
+<section class="unidades" style="background-image: url('imagens/backmaps.jpeg')">
+    <div class="card text-center" style="width: 83vw;" >
+      <div class="card-header ">
+        Nossas Unidades
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Procure o Smarket mais próximo à você!</h5>
+        <p class="card-text">Conheça todas as nossas unidades.<br>Nossa tecnologia te espera.</p>
+        <button href="#" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#modalunidades">Nossas Lojas</button>
+      </div>
+      <div class="card-footer text-body-secondary">Faça compras de um jeito diferente.
+        
+      </div>
+    </div>
+</section>
+<hr>
+    <section class="sobrenos">
+
+      <div class="container">
+      
+        <div class="row d-flex justify-content-center mt-5">
+          <div class="col-md-4 mt-4 mb-2 shadow-lg p-3 mb-3 bg-body-tertiary d-flex justify-content-center rounded-pill">
+            
+            
+            <a><h1 class="fw-light">Sobre Nós</h1></a>
+          </div>
+        
+        </div>
+      </div>
+      <div class="card row row-cols-1  g-4 col-10 m-auto mx-auto shadow p-2 mb-5 mt-5 bg-body-tertiary rounded">
+        
+        <div class="card-body">
+          <blockquote class="blockquote mb-0">
+            <p>O Smarket foi criado para facilitar a forma de fazer suas compras. Sem o estresse de filas ou outros empecílios de um supermercado comum, contamos com alta tecnologia para agilizar o processo. Estamos sempre nos atualizando para manter o conforto de nossos clientes. Venha nos visitar e conhecer um pouco desse novo método de compras!</p>
+            <hr>
+            <div class="more text-center">
+              <button  class="btn btn-outline-dark" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop">Saiba Mais</button>
+              <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTop">
+                <div class="offcanvas-header">
+                  <h5 class="offcanvas-title" id="offcanvasBottomLabel">Fundadores</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Sobrenome</th>
+                        <th scope="col">RA</th>
+                      </tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+                      <tr>
+                        <th scope="row">Christian Luiz dos Santos </th>
+                        <td>Ferraz</td>
+                        <td>922201863</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Felipe Richard</th>
+                        <td>de Lima</td>
+                        <td>922204253</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Fernando</th>
+                        <td>Saraiva</td>
+                        <td>1722104076</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Gustavo Novaes</th>
+                        <td>Pedroso</td>
+                        <td>921115597</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Pedro Henrique Procópio 
+                        </th>
+                        <td>da Silva</td>
+                        <td>922100274</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Wilmer Pizza 
+                        </th>
+                        <td>Paucara</td>
+                        <td>922201393</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </blockquote>
+        </div>
+      </section>
+    </div>
+    
+    <div class="footercor">
+      <footer class="text-center text-white">
+        <!-- Grid container -->
+          <div class="container pt-4">
+        <!-- Section: Social media -->
+        <section class="mb-4">
+          <!-- Facebook -->
+          <a
+          class="btn btn-link btn-floating btn-lg text-dark m-1"
+            href="#!"
+            role="button"
+            data-mdb-ripple-color="dark"
+            ><i class="fab fa-facebook-f"></i
+              ></a>
+              
+              <!-- Twitter -->
+              <a
+              class="btn btn-link btn-floating btn-lg text-dark m-1"
+              href="#!"
+              role="button"
+              data-mdb-ripple-color="dark"
+            ><i class="fab fa-twitter"></i
+          ></a>
+    
+          <!-- Google -->
+          <a
+            class="btn btn-link btn-floating btn-lg text-dark m-1"
+            href="#!"
+            role="button"
+            data-mdb-ripple-color="dark"
+            ><i class="fab fa-google"></i
+          ></a>
+    
+          <!-- Instagram -->
+          <a
+          class="btn btn-link btn-floating btn-lg text-dark m-1"
+          href="#!"
+            role="button"
+            data-mdb-ripple-color="dark"
+            ><i class="fab fa-instagram"></i
+              ></a>
+              
+              <!-- Linkedin -->
+          <a
+          class="btn btn-link btn-floating btn-lg text-dark m-1"
+          href="#!"
+          role="button"
+          data-mdb-ripple-color="dark"
+            ><i class="fab fa-linkedin"></i
+              ></a>
+            </section>
+            <!-- Section: Social media -->
+          </div>
+          <!-- Grid container -->
+          
+    
+        <!-- Copyright -->
+    <div class="text-center text-dark p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      © 2023 Copyright:
+      <a class="text-dark" href="#">Smarket.co</a><br>
+      <hr>
+      <p><a href="https://www.uninove.br/"><img src="imagens/logo uninove.png" alt="" style="width: 100px;"></a></p>
+      
+    </div>
+    <!-- Copyright -->
+  </footer>
+
+  <div class="modal fade" id="batatamodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Produto adicionado!</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          O produto selecionado foi adiconado ao carinho!
+        </div>
+        
+        <div class="modal-footer ">
+          
+        <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Adicionar no Carrinho</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="modalunidades" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <h5 class="modal-title text-center" id="exampleModalLabel">Nossas Unidades</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body h-100">
+          <div class="row">
+            <div class="row col-md-6">
+              <p>
+                <button class="btn btn-outline-dark" type="button" data-bs-toggle="collapse" data-bs-target="#santana" aria-expanded="false" aria-controls="collapseWidthExample">
+                  Unidade Santana
+                </button>
+              </p>
+              <div style="min-height: 120px;">
+                <div class="collapse collapse-vertical" id="santana">
+                  <div class="card card-body" style="width: 100%;">
+                    <img src="imagens/santana.png">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row col-md-6">
+              <p>
+                <button class="btn btn-outline-dark" type="button" data-bs-toggle="collapse" data-bs-target="#barrafunda" aria-expanded="false" aria-controls="collapseWidthExample">
+                  Unidade Paraíso
+                </button>
+              </p>
+              <div style="min-height: 120px;">
+                <div class="collapse collapse-vertical" id="barrafunda">
+                  <div class="card card-body" style="width: 100%;">
+                    <img src="imagens/barrafunda.jpg">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row col-md-6">
+              <p>
+                <button class="btn btn-outline-dark mt-4" type="button" data-bs-toggle="collapse" data-bs-target="#jardins" aria-expanded="false" aria-controls="collapseWidthExample">
+                  Unidade Jardins
+                </button>
+              </p>
+              <div style="min-height: 120px;">
+                <div class="collapse collapse-vertical mb-4" id="jardins">
+                  <div class="card card-body" style="width: 100%;">
+                    <img src="imagens/jardins-sp.jpg">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row col-md-6">
+              <p>
+                <button class="btn btn-outline-dark mt-4" type="button" data-bs-toggle="collapse" data-bs-target="#morumbi" aria-expanded="false" aria-controls="collapseWidthExample">
+                  Unidade Morumbi
+                </button>
+              </p>
+              <div style="min-height: 120px;">
+                <div class="collapse collapse-vertical mb-4" id="morumbi">
+                  <div class="card card-body" style="width: 100%;">
+                    <img src="imagens/morumbi.jpg">
+                  </div>
+                </div>
+              </div>
+            </div>
+          
+
+          
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Fechar</button>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+
+
+<style>
+  .unidades {
+  
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  min-height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sobrenos{
+  background: linear-gradient(to top, #f1f1f1, #ffff);
+
+}
+
+.footercor{
+  background: linear-gradient(to bottom, #f1f1f1, rgba(0, 0, 0, 0.2));
+
+}
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 8px;}
+</style>
+
+    
+ 
+        
+        
+
+           
+  
+    
+  <script>
+   function search() {
+  const searchTerm = document.querySelector('input[name="busca"]').value;
+  
+  if (searchTerm === 'batata') {
+    document.querySelector('#batatamodal').style.display = 'block';
+  } else if (searchTerm === 'coca') {
+    document.querySelector('#modal2').style.display = 'block';
+  } else {
+    alert('Este produto encotra-se indisponível!  :(');
+  }
+}
+
+function user(){
+  alert('Usuário não encontrado')
+}
+  </script>  
+    
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"
+
+
+
+
+
+
+></script>
+
+
+</html>
